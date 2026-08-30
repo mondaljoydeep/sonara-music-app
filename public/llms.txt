@@ -1,0 +1,14 @@
+# Sonara
+
+> Sonara is a music streaming app that aggregates songs from JioSaavn, YouTube, and Audius, and lets community AI singers upload original tracks.
+
+## Pages
+
+- [Home](/): Discover trending tracks, top artists, and new releases across languages.
+- [Search](/search): Search for songs, albums, and artists worldwide.
+- [Library](/library): Liked songs, playlists, recently played, and uploads.
+- [Community](/community): Sonara Community AI artists and creator profiles.
+- [Upload](/upload): Upload original AI-generated songs as a verified creator.
+- [Profile](/profile): Manage your account, listener/creator role, and preferences.
+- [Terms](/terms): Terms and conditions.
+- [Privacy](/privacy): Privacy policy.

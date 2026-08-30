@@ -1,0 +1,167 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 240 20% 5%;
+    --foreground: 0 0% 100%;
+
+    --card: 240 14% 12%;
+    --card-foreground: 0 0% 100%;
+
+    --popover: 240 14% 12%;
+    --popover-foreground: 0 0% 100%;
+
+    --primary: 141 73% 51%;
+    --primary-foreground: 0 0% 0%;
+
+    --secondary: 240 13% 9%;
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 240 11% 15%;
+    --muted-foreground: 0 0% 70%;
+
+    --accent: 141 73% 51%;
+    --accent-foreground: 0 0% 0%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 0 0% 100%;
+    --input: 240 11% 15%;
+    --ring: 141 73% 51%;
+
+    --radius: 0.75rem;
+
+    --bg-primary: #0a0a0f;
+    --bg-secondary: #111118;
+    --bg-card: #1a1a24;
+    --bg-elevated: #22222e;
+    --accent-green: #1ed760;
+    --accent-glow: rgba(30, 215, 96, 0.3);
+    --text-primary: #ffffff;
+    --text-secondary: #b3b3b3;
+    --text-muted: #535353;
+    --player-bg: #181818;
+  }
+
+  .dark {
+    --background: 240 20% 5%;
+    --foreground: 0 0% 100%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border/10;
+  }
+
+  html, body, #root {
+    height: 100%;
+  }
+
+  body {
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+  }
+}
+
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb {
+  background: var(--text-muted);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover { background: var(--text-secondary); }
+
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+@keyframes spin-slow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+.animate-spin-slow { animation: spin-slow 8s linear infinite; }
+
+@keyframes slide-up {
+  from { transform: translateY(100%); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+.animate-slide-up { animation: slide-up 0.35s ease-out; }
+
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.4; transform: scale(0.85); }
+}
+.animate-pulse-dot { animation: pulse-dot 1.4s ease-in-out infinite; }
+
+@keyframes fade-in {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.animate-fade-in { animation: fade-in 0.3s ease-out; }
+
+@keyframes heart-pop {
+  0% { transform: scale(1); }
+  40% { transform: scale(1.35); }
+  100% { transform: scale(1); }
+}
+.animate-heart-pop { animation: heart-pop 0.35s ease-out; }
+
+.gradient-bollywood { background: linear-gradient(135deg, #ff6a3d, #c9184a); }
+.gradient-pop { background: linear-gradient(135deg, #f72585, #7209b7); }
+.gradient-hiphop { background: linear-gradient(135deg, #ffba08, #d00000); }
+.gradient-rock { background: linear-gradient(135deg, #6a040f, #370617); }
+.gradient-electronic { background: linear-gradient(135deg, #00b4d8, #7209b7); }
+.gradient-jazz { background: linear-gradient(135deg, #b08968, #7f5539); }
+.gradient-classical { background: linear-gradient(135deg, #283618, #606c38); }
+.gradient-lofi { background: linear-gradient(135deg, #f4a261, #e76f51); }
+.gradient-kpop { background: linear-gradient(135deg, #ff70a6, #ff9770); }
+.gradient-rnb { background: linear-gradient(135deg, #5a189a, #240046); }
+.gradient-punjabi { background: linear-gradient(135deg, #fb8500, #ffb703); }
+.gradient-tamil { background: linear-gradient(135deg, #06d6a0, #118ab2); }
+
+@keyframes scale-in {
+  from { opacity: 0; transform: scale(0.94); }
+  to { opacity: 1; transform: scale(1); }
+}
+.animate-scale-in { animation: scale-in 0.22s cubic-bezier(0.16, 1, 0.3, 1); }
+
+/* Vertical EQ sliders */
+.eq-slider {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 8px;
+  height: 100%;
+  writing-mode: vertical-lr;
+  direction: rtl;
+  background: transparent;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.eq-slider::-webkit-slider-runnable-track {
+  width: 8px;
+  border-radius: 4px;
+}
+.eq-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 2px 8px rgba(30, 215, 96, 0.5);
+  border: 2px solid #1ed760;
+  cursor: grab;
+}
+.eq-slider::-moz-range-thumb {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #fff;
+  border: 2px solid #1ed760;
+  cursor: grab;
+}

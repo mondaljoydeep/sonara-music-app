@@ -1,0 +1,153 @@
+{
+  "version": 1,
+  "sdk_version": "0.20.0",
+  "path": "/functions/v1/mcp",
+  "auth": {
+    "type": "none"
+  },
+  "mcp": {
+    "server": {
+      "name": "sonara-mcp",
+      "version": "0.1.0",
+      "title": "Sonara Music"
+    },
+    "tools": [
+      {
+        "name": "search_songs",
+        "title": "Search songs on Sonara",
+        "description": "Search Sonara's music catalog (Bollywood, Pop, K-Pop, Punjabi, Tamil, Lo-Fi and more) for songs by title, artist, or lyric snippet.",
+        "annotations": {
+          "readOnlyHint": true,
+          "idempotentHint": true,
+          "openWorldHint": true
+        },
+        "inputSchema": {
+          "type": "object",
+          "properties": {
+            "query": {
+              "type": "string",
+              "minLength": 1,
+              "description": "Search text — song title, artist name, or lyric."
+            },
+            "limit": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 20,
+              "default": 10,
+              "description": "Max results to return."
+            }
+          },
+          "required": [
+            "query"
+          ],
+          "additionalProperties": false,
+          "$schema": "http://json-schema.org/draft-07/schema#"
+        },
+        "outputSchema": null
+      },
+      {
+        "name": "get_trending",
+        "title": "Get trending tracks",
+        "description": "Get currently trending tracks on Sonara filtered by language or genre (hindi, english, punjabi, tamil, kpop, latin, lofi).",
+        "annotations": {
+          "readOnlyHint": true,
+          "openWorldHint": true
+        },
+        "inputSchema": {
+          "type": "object",
+          "properties": {
+            "language": {
+              "type": "string",
+              "enum": [
+                "hindi",
+                "english",
+                "punjabi",
+                "tamil",
+                "kpop",
+                "latin",
+                "lofi"
+              ],
+              "default": "hindi"
+            },
+            "limit": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 20,
+              "default": 10
+            }
+          },
+          "additionalProperties": false,
+          "$schema": "http://json-schema.org/draft-07/schema#"
+        },
+        "outputSchema": null
+      },
+      {
+        "name": "get_lyrics",
+        "title": "Get song lyrics",
+        "description": "Fetch lyrics for a song by title and artist using Sonara's lyrics provider (LRCLib).",
+        "annotations": {
+          "readOnlyHint": true,
+          "openWorldHint": true
+        },
+        "inputSchema": {
+          "type": "object",
+          "properties": {
+            "title": {
+              "type": "string",
+              "minLength": 1,
+              "description": "Song title"
+            },
+            "artist": {
+              "type": "string",
+              "minLength": 1,
+              "description": "Primary artist name"
+            }
+          },
+          "required": [
+            "title",
+            "artist"
+          ],
+          "additionalProperties": false,
+          "$schema": "http://json-schema.org/draft-07/schema#"
+        },
+        "outputSchema": null
+      },
+      {
+        "name": "build_playlist",
+        "title": "Build a Sonara playlist",
+        "description": "Build a themed playlist by mixing tracks across up to 4 mood/genre seeds (e.g. 'romantic hindi', 'workout punjabi', 'lofi chill').",
+        "annotations": {
+          "readOnlyHint": true,
+          "openWorldHint": true
+        },
+        "inputSchema": {
+          "type": "object",
+          "properties": {
+            "seeds": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "minLength": 1
+              },
+              "minItems": 1,
+              "maxItems": 4,
+              "description": "Seed queries to mix."
+            },
+            "size": {
+              "type": "integer",
+              "minimum": 3,
+              "maximum": 30,
+              "default": 15
+            }
+          },
+          "required": [
+            "seeds"
+          ],
+          "additionalProperties": false,
+          "$schema": "http://json-schema.org/draft-07/schema#"
+        },
+        "outputSchema": null
+      }
+    ]
+  }
+}
